@@ -20,9 +20,6 @@ namespace TowerOfHanoi
         }
 
         public void Move(int from, int where) {
-            /*Console.WriteLine(Towers[from].Count + " " + Towers[where].Count);
-            Towers[where].Push(Towers[from].Pop());
-            Console.WriteLine(Towers[from].Count + " " + Towers[where].Count);*/
             if (from < 0 || from >= Towers.Length || where < 0 || where >= Towers.Length) {
                 Console.WriteLine("Jsi kkt");
                 return;
