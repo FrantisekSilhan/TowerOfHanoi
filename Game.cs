@@ -8,7 +8,6 @@ namespace TowerOfHanoi
 {
     internal class Game
     {
-        private bool _Won = false;
         public int Discs { get; set; }
         public Stack<int>[] Towers = {
         new Stack<int>(),
@@ -20,14 +19,14 @@ namespace TowerOfHanoi
             Discs = discs;
         }
 
-        public void Move(int from, int where) {
+        public bool Move(int from, int where) {
             if (from < 0 || from >= Towers.Length || where < 0 || where >= Towers.Length || Towers[from].Count == 0 || Towers[where].Count != 0 && Towers[from].Peek() > Towers[where].Peek()) {
                 throw new Exception("Jsi kkt");
             }
 
             Towers[where].Push(Towers[from].Pop());
 
-            if (Towers[Towers.Length- 1].Count == Discs) _Won = true;
+            return (Towers[Towers.Length - 1].Count == Discs);
         }
 
         public override string ToString()
@@ -44,7 +43,6 @@ namespace TowerOfHanoi
                 }
                 state += "\n";
             }
-            if (_Won) state += "Vyhrál jsi!";
             return state;
         }
     }
