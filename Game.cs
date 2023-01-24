@@ -14,9 +14,7 @@ namespace TowerOfHanoi
         new Stack<int>()
         };
         public Game(int discs) {
-            for (int i = discs; i > 0; i--) {
-                Towers[0].Push(i);
-            }
+            for (int i = discs; i > 0; i--) Towers[0].Push(i);
         }
 
         public void Move(int from, int where) {
