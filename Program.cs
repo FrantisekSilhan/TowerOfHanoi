@@ -1,29 +1,34 @@
 ﻿using TowerOfHanoi;
 
-Game toh = new Game(3);
+int discs = 31;
+Game toh = new Game(discs);
 bool mnau = false;
 
-Random rnd = new Random();
-int moves = 0;
-
-while (!mnau) {
-    try
+if (discs % 2 == 0)
+{
+    while (!mnau)
     {
-        int a = rnd.Next(0, 3);
-        int b = rnd.Next(0, 3);
-
-        while (a == b)
-        {
-            b = rnd.Next(0, 3);
-        }
-
-        mnau = toh.Move(a, b);
-        moves++;
+        try { mnau = toh.Move(0, 1); } catch { try { mnau = toh.Move(1, 0); } catch { } }
         Console.WriteLine(toh.ToString());
-    } catch {
-
+        try { mnau = toh.Move(0, 2); } catch { try { mnau = toh.Move(2, 0); } catch { } }
+        Console.WriteLine(toh.ToString());
+        try { mnau = toh.Move(1, 2); } catch { try { mnau = toh.Move(2, 1); } catch { } }
+        Console.WriteLine(toh.ToString());
+    }
+}
+else
+{
+    try { mnau = toh.Move(0, 2); } catch { try { mnau = toh.Move(2, 0); } catch { } }
+    Console.WriteLine(toh.ToString());
+    while (!mnau)
+    {
+        try { mnau = toh.Move(0, 1); } catch { try { mnau = toh.Move(1, 0); } catch { } }
+        Console.WriteLine(toh.ToString());
+        try { mnau = toh.Move(1, 2); } catch { try { mnau = toh.Move(2, 1); } catch { } }
+        Console.WriteLine(toh.ToString());
+        try { mnau = toh.Move(0, 2); } catch { try { mnau = toh.Move(2, 0); } catch { } }
+        Console.WriteLine(toh.ToString());
     }
 }
 
-Console.WriteLine("Ez win!");
-Console.WriteLine(moves);
+Console.WriteLine(toh.Moves);

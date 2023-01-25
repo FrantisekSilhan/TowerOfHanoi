@@ -8,6 +8,7 @@ namespace TowerOfHanoi
 {
     internal class Game
     {
+        public int Moves { get; private set; }
         public int Discs { get; set; }
         public Stack<int>[] Towers = {
         new Stack<int>(),
@@ -17,6 +18,7 @@ namespace TowerOfHanoi
         public Game(int discs) {
             for (int i = discs; i > 0; i--) Towers[0].Push(i);
             Discs = discs;
+            Moves = 0;
         }
 
         public bool Move(int from, int where) {
@@ -25,6 +27,7 @@ namespace TowerOfHanoi
             }
 
             Towers[where].Push(Towers[from].Pop());
+            Moves++;
 
             return (Towers[Towers.Length - 1].Count == Discs);
         }
