@@ -8,7 +8,7 @@ namespace TowerOfHanoi
 {
     internal class Game
     {
-        public int Moves { get; private set; }
+        //public int Moves { get; private set; }
         public int Discs { get; set; }
         public Stack<int>[] Towers = {
         new Stack<int>(),
@@ -18,18 +18,18 @@ namespace TowerOfHanoi
         public Game(int discs) {
             for (int i = discs; i > 0; i--) Towers[0].Push(i);
             Discs = discs;
-            Moves = 0;
+            //Moves = 0;
         }
 
         public bool Move(int from, int where) {
-            if (from < 0 || from >= Towers.Length || where < 0 || where >= Towers.Length || Towers[from].Count == 0 || Towers[where].Count != 0 && Towers[from].Peek() > Towers[where].Peek()) {
+            if (from < 0 || from > 2 || where < 0 || where > 2 || Towers[from].Count == 0 || Towers[where].Count != 0 && Towers[from].Peek() > Towers[where].Peek()) {
                 throw new Exception("Jsi kkt");
             }
 
             Towers[where].Push(Towers[from].Pop());
-            Moves++;
+            //Moves++;
 
-            return (Towers[Towers.Length - 1].Count == Discs);
+            return (Towers[2].Count == Discs);
         }
 
         public override string ToString()
