@@ -27,7 +27,6 @@ namespace TowerOfHanoi
             }
 
             Towers[where].Push(Towers[from].Pop());
-            //Moves++;
 
             return (Towers[2].Count == Discs);
         }
